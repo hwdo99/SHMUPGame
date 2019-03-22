@@ -22,13 +22,13 @@ public class SFXManage : MonoBehaviour
         SFXSource.volume = PlayerPrefs.GetFloat("SFX");
     }
 
-    public AudioClip getButtonSFX()
+    public AudioClip GetButtonSFX()
     {
         SFXSource.clip = buttonSFX;
         return SFXSource.clip;
     }
 
-    public AudioClip getFireSFX()
+    public AudioClip GetFireSFX()
     {
         SFXSource.clip = fireSFX;
         return SFXSource.clip;

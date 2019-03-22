@@ -12,7 +12,7 @@ public class GameManage : MonoBehaviour
     public void Awake()
     {
         sfx = GameObject.FindGameObjectWithTag("SFX").GetComponent<AudioSource>();
-        buttonSound = SFXManage.getButtonSFX();
+        buttonSound = SFXManage.GetButtonSFX();
         sfx.clip = buttonSound;
     }
 
@@ -26,7 +26,7 @@ public class GameManage : MonoBehaviour
     {
         sfx.Play();
         Time.timeScale = 1;
-        //PauseMenu.gameIsPaused = false;
+        PauseMenu.gameIsPaused = false;
         SceneManager.UnloadSceneAsync(4);
     }
 
