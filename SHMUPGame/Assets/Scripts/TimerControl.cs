@@ -21,7 +21,7 @@ public class TimerControl : MonoBehaviour
     public void Update()
     {
 
-        if (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (!startGame)
             {

@@ -511,7 +511,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ea921122f393e154db3ea2f7fd3580eb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.799
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SFXManage: {fileID: 455195177}
   buttonSound: {fileID: 0}
-  sfx: {fileID: 455195175}
+  sfx: {fileID: 0}
 --- !u!1 &1058879526
 GameObject:
   m_ObjectHideFlags: 0

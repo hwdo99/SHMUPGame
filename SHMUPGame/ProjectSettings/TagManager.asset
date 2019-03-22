@@ -7,6 +7,9 @@ TagManager:
   - Music
   - SFX
   - Scoreboard
+  - PressEnter
+  - CountdownTimer
+  - Pkey
   layers:
   - Default
   - TransparentFX

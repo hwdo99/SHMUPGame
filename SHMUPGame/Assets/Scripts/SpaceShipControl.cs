@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class SpaceShipControl : MonoBehaviour
 {
-    private float Movespeed = 6f;
+    private float Movespeed = 5f;
     private float rotationSpeed = 200f;
-    private float shipRadius = 0.75f;
+    private float shipRadius = 0.45f;
     Vector3 startPosition = new Vector3(0f, 0f, 0f);
     public bool startGame;
     public Text scoreText;
@@ -19,7 +19,6 @@ public class SpaceShipControl : MonoBehaviour
     {
         startGame = false;
         startPosition = transform.position;
-        //Vector3 position = transform.position;
         Cursor.visible = true;
     }
 
@@ -27,8 +26,9 @@ public class SpaceShipControl : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
+            Destroy(GameObject.FindWithTag("Pkey"));
             startGame = true;
         }
 
@@ -45,7 +45,6 @@ public class SpaceShipControl : MonoBehaviour
                 this.gameObject.transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
 
 
-            //transform.position = new Vector3(Mathf.Clamp(transform.position.x, -850f, 850f), Mathf.Clamp(transform.position.y, -500f, 500f), transform.position.z);
 
             Vector3 pos = transform.position;
 
