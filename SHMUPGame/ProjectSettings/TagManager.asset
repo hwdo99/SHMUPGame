@@ -11,6 +11,7 @@ TagManager:
   - CountdownTimer
   - Pkey
   - Enemy
+  - Spaceship
   layers:
   - Default
   - TransparentFX
@@ -47,4 +48,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Asteroids Layer
+    uniqueID: 4259289815
     locked: 0
