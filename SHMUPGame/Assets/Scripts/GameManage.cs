@@ -7,7 +7,7 @@ public class GameManage : MonoBehaviour
 {
     public SFXManage SFXManage;
     public AudioClip buttonSound;
-    public AudioSource sfx;
+    AudioSource sfx;
 
     public void Awake()
     {

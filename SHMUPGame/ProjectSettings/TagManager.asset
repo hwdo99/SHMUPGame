@@ -10,6 +10,7 @@ TagManager:
   - PressEnter
   - CountdownTimer
   - Pkey
+  - Enemy
   layers:
   - Default
   - TransparentFX
