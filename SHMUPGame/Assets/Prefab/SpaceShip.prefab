@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1161144061846136079}
   - component: {fileID: 1392709100146160331}
   - component: {fileID: 7817569774171473353}
+  - component: {fileID: 4879026690823091419}
   m_Layer: 5
   m_Name: SpaceShip
   m_TagString: Spaceship
@@ -129,3 +130,19 @@ PolygonCollider2D:
       - {x: -0.47447968, y: -56.557983}
       - {x: 74.060616, y: -45.007477}
       - {x: 73.30854, y: -10.285858}
+--- !u!114 &4879026690823091419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161144061846136077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4a38a5954aca44b9df67f2145ef9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startGame: 0
+  scoreText: {fileID: 0}
+  score: 0
+  shipPrefab: {fileID: 0}

@@ -9,7 +9,7 @@ public class SpaceShipControl : MonoBehaviour
     private float Movespeed = 5f;
     private float rotationSpeed = 200f;
     private float shipRadius = 0.45f;
-    Vector3 startPosition = new Vector3(0f, 0f, 0f);
+   // Vector3 startPosition = new Vector3(0f, 0f, 0f);
     public bool startGame;
     public Text scoreText;
     public int score = 0;
@@ -18,7 +18,7 @@ public class SpaceShipControl : MonoBehaviour
     void Start()
     {
         startGame = false;
-        startPosition = transform.position;
+        //startPosition = transform.position;
         Cursor.visible = true;
     }
 
@@ -73,14 +73,28 @@ public class SpaceShipControl : MonoBehaviour
         }
 
     }
-
+ 
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collidedWith = collision.gameObject;
-        if (collidedWith.tag == "Apple" && collidedWith != null)
+        if (collidedWith.tag == "Enemy" && collidedWith != null)
         {
             Destroy(collidedWith);
-            ScoreScript.currentScore += 10;
+            LivesScript.lives -= 1;
+            if (LivesScript.lives > 0)
+            {
+                StartCoroutine(Respawn());
+            }
         }
+    }
+
+    IEnumerator Respawn()
+    {
+        this.gameObject.GetComponent<Renderer>().enabled = false;
+        yield return new WaitForSeconds(3);
+        Vector3 position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Vector3 pos = Camera.main.ScreenToWorldPoint(position);
+        this.gameObject.GetComponent<Renderer>().enabled = true;
+        transform.position = pos;
     }
 }
