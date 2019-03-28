@@ -15,6 +15,7 @@ public class SpaceShip : MonoBehaviour
     float fireRate = 0.5f;
     public GameObject projectilePrefab;
     private bool isDead;
+    private bool isInvincible;
     private bool playEngine;
     public GameObject explosionPrefab;
     private ParticleSystem engineFire;
@@ -107,6 +108,7 @@ public class SpaceShip : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
+        if (isInvincible) return;
         GameObject collidedWith = collision.gameObject;
         if (collidedWith.tag == "Enemy" && collidedWith != null)
         {
@@ -130,8 +132,11 @@ public class SpaceShip : MonoBehaviour
         var explosion = Instantiate(explosionPrefab, pos, transform.rotation);
         yield return new WaitForSeconds(4);
         Destroy(explosion);
-        GetComponent<Image>().color = Color.white;
-        yield return new WaitForSeconds(0.75f);
         isDead = false;
+        isInvincible = true;
+        GetComponent<Image>().color = new Color(50 / 100f, 50 / 100f, 1, 1); // make color different when invincible
+        yield return new WaitForSeconds(3); // gain invincibility for 3 seconds after respawning
+        isInvincible = false; // invincibility wears off
+        GetComponent<Image>().color = Color.white;
     }
 }
