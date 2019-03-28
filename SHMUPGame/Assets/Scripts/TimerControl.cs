@@ -8,7 +8,7 @@ public class TimerControl : MonoBehaviour
 {
     float startTime = 60;
     bool startGame;
-    float currentTime;
+    public static float currentTime;
     Text timer;
 
     public void Start()

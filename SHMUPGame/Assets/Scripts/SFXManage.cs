@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class SFXManage : MonoBehaviour
 {
+    public static SFXManage instance;
     public static AudioSource SFXSource;
     public AudioClip buttonSFX;
     public AudioClip fireSFX;
@@ -11,6 +14,19 @@ public class SFXManage : MonoBehaviour
 
     private void Awake()
     {
+        // makes sure theres only 1 copy
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            if (instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
         DontDestroyOnLoad(transform.gameObject);
         SFXSource = GetComponent<AudioSource>();
         if (!PlayerPrefs.HasKey("SFX"))
@@ -22,15 +38,13 @@ public class SFXManage : MonoBehaviour
         SFXSource.volume = PlayerPrefs.GetFloat("SFX");
     }
 
-    public AudioClip GetButtonSFX()
+    public void PlayButtonSFX()
     {
-        SFXSource.clip = buttonSFX;
-        return SFXSource.clip;
+        SFXSource.PlayOneShot(buttonSFX);
     }
 
-    public AudioClip GetFireSFX()
+    public void PlayFireSFX()
     {
-        SFXSource.clip = fireSFX;
-        return SFXSource.clip;
+        SFXSource.PlayOneShot(fireSFX);
     }
 }

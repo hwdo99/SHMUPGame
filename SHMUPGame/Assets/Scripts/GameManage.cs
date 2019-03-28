@@ -5,26 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManage : MonoBehaviour
 {
-    public SFXManage SFXManage;
-    public AudioClip buttonSound;
-    AudioSource sfx;
-
-    public void Awake()
-    {
-        sfx = GameObject.FindGameObjectWithTag("SFX").GetComponent<AudioSource>();
-        buttonSound = SFXManage.GetButtonSFX();
-        sfx.clip = buttonSound;
-    }
 
     public void StartGame()
     {
-        sfx.Play();
+        SFXManage.instance.PlayButtonSFX();
         SceneManager.LoadScene(1);
     }
 
     public void ResumeGame()
     {
-        sfx.Play();
+        SFXManage.instance.PlayButtonSFX();
         Time.timeScale = 1;
         PauseMenu.gameIsPaused = false;
         SceneManager.UnloadSceneAsync(4);
@@ -32,38 +22,38 @@ public class GameManage : MonoBehaviour
 
     public void QuitGame()
     {
-        sfx.Play();
+        SFXManage.instance.PlayButtonSFX();
         Application.Quit();
     }
 
     public void RestartGame()
     {
-        sfx.Play();
+        SFXManage.instance.PlayButtonSFX();
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 
     public void ScoreMenu()
     {
-        sfx.Play();
+        SFXManage.instance.PlayButtonSFX();
         SceneManager.LoadScene(3, LoadSceneMode.Additive);
     }
 
     public void BackToMainMenu()
     {
-        sfx.Play();
+        SFXManage.instance.PlayButtonSFX();
         SceneManager.UnloadSceneAsync(3);
     }
 
     public void BackToPauseMenu()
     {
-        sfx.Play();
+        SFXManage.instance.PlayButtonSFX();
         SceneManager.UnloadSceneAsync(5);
     }
 
     public void ToOptionsMenu()
     {
-        sfx.Play();
+        SFXManage.instance.PlayButtonSFX();
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
 }

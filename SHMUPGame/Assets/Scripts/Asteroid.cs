@@ -11,7 +11,7 @@ public class Asteroid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = Random.Range(50f, 100f);
+        speed = Random.Range(100f, 200f);
         asteroid = GetComponent<Rigidbody2D>();
         asteroid.velocity = transform.right * speed * Time.deltaTime;
         asteroid.AddTorque(Random.Range(-20f, 20f));

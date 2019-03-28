@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class SpaceShipControl : MonoBehaviour
+public class SpaceShip : MonoBehaviour
 {
     private float Movespeed = 5f;
     private float rotationSpeed = 200f;
@@ -13,13 +13,18 @@ public class SpaceShipControl : MonoBehaviour
     public bool startGame;
     public Text scoreText;
     public int score = 0;
+    private float nextFire;
+    float fireRate = 0.5f;
+    public GameObject projectilePrefab;
+    public bool isDead;
+    public GameObject explosionPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         startGame = false;
-        //startPosition = transform.position;
         Cursor.visible = true;
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -34,17 +39,27 @@ public class SpaceShipControl : MonoBehaviour
 
         if (startGame)
         {
-
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-                this.gameObject.transform.Translate(Vector3.up * Movespeed * Time.deltaTime);
-
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-                this.gameObject.transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-                this.gameObject.transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
+            if (!isDead)
+            {
+                var engineFire = GetComponent<ParticleSystem>();
+                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+                    this.gameObject.transform.Translate(Vector3.up * Movespeed * Time.deltaTime);
 
 
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                    this.gameObject.transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+
+                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                    this.gameObject.transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
+
+                if (Input.GetKey(KeyCode.Space) && Time.time > nextFire)
+                {
+                    SFXManage.instance.PlayFireSFX();
+                    nextFire = Time.time + fireRate;
+                    Instantiate(projectilePrefab, transform.position, transform.rotation);
+                }
+            }
+          
 
             Vector3 pos = transform.position;
 
@@ -73,14 +88,16 @@ public class SpaceShipControl : MonoBehaviour
         }
 
     }
- 
-    void OnCollisionEnter2D(Collision2D collision)
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isDead) return;
         GameObject collidedWith = collision.gameObject;
         if (collidedWith.tag == "Enemy" && collidedWith != null)
         {
             Destroy(collidedWith);
             LivesScript.lives -= 1;
+            TimerControl.currentTime -= 10;
             if (LivesScript.lives > 0)
             {
                 StartCoroutine(Respawn());
@@ -88,13 +105,17 @@ public class SpaceShipControl : MonoBehaviour
         }
     }
 
-    IEnumerator Respawn()
+    private IEnumerator Respawn()
     {
-        this.gameObject.GetComponent<Renderer>().enabled = false;
-        yield return new WaitForSeconds(3);
-        Vector3 position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-        Vector3 pos = Camera.main.ScreenToWorldPoint(position);
-        this.gameObject.GetComponent<Renderer>().enabled = true;
-        transform.position = pos;
+        isDead = true;
+        Color color = new Color(0, 0, 0, 0);
+        GetComponent<Image>().color = color;
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
+        var explosion = Instantiate(explosionPrefab, pos, transform.rotation);
+        yield return new WaitForSeconds(5);
+        Destroy(explosion);
+        GetComponent<Image>().color = Color.white;
+        yield return new WaitForSeconds(0.5f);
+        isDead = false;
     }
 }

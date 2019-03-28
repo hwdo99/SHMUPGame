@@ -7,9 +7,13 @@ public class ShipRespawner : MonoBehaviour
     public GameObject shipPrefab;
     public bool startGame;
 
-    public void Start()
+    public void Awake()
     {
         startGame = false;
+        shipPrefab.SetActive(true);
+        Vector3 position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Vector3 pos = Camera.main.ScreenToWorldPoint(position);
+        Instantiate(shipPrefab, pos, Quaternion.identity);
     }
 
     public void Update()
@@ -18,12 +22,6 @@ public class ShipRespawner : MonoBehaviour
         {
             Destroy(GameObject.FindWithTag("Pkey"));
             startGame = true;
-        }
-        if (startGame)
-        {
-            Vector3 position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-            Vector3 pos = Camera.main.ScreenToWorldPoint(position);
-            Instantiate(shipPrefab, pos, Quaternion.identity);
         }
     }
 
@@ -34,17 +32,19 @@ public class ShipRespawner : MonoBehaviour
         {
             LivesScript.lives -= 1;
             Destroy(collidedWith);
-            Destroy(this.gameObject);
             StartCoroutine("Respawn", 5f);
         }
     }
 
      
-    IEnumerator Respawn(float spawnDelay)
+    private IEnumerator Respawn(float spawnDelay)
     {
+        shipPrefab.SetActive(false);
         yield return new WaitForSeconds(spawnDelay);
-        Vector3 position = new Vector3(Screen.width/2, Screen.height/2, 0);
-        Vector3 pos = Camera.main.ScreenToWorldPoint(position);
-        Instantiate(shipPrefab, pos, Quaternion.identity);
+        shipPrefab.SetActive(true);
+        shipPrefab.transform.position = Vector3.zero;
+        shipPrefab.transform.rotation = Quaternion.identity;
+        shipPrefab.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        shipPrefab.GetComponent<Rigidbody2D>().angularVelocity = 0f;
     }
 }

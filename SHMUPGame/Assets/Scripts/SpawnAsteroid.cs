@@ -7,10 +7,10 @@ public class SpawnAsteroid : MonoBehaviour
     private float speed;
     public bool startGame;
     public GameObject asteroidPrefab;
-    float spawnDelay = 1.5f;
-    public float horizontalOrVertical = 0.50f;
-    public float leftOrRight = 0.50f;
-    public float topOrBottom = 0.50f;
+    float spawnDelay = 0.90f;
+    float horizontalOrVertical = 0.50f;
+    float leftOrRight = 0.50f;
+    float topOrBottom = 0.50f;
 
 
     // Start is called before the first frame update
