@@ -32,7 +32,7 @@ public class TimerControl : MonoBehaviour
         if (startGame)
         {
             currentTime -= Time.deltaTime;
-            timer.text = "Time: " + currentTime;
+            timer.text = $"Time: {Mathf.Round(currentTime)} Seconds";
         }
 
         if (currentTime <= 0)

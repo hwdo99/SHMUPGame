@@ -8,15 +8,14 @@ public class SpaceShip : MonoBehaviour
 {
     private float Movespeed = 5f;
     private float rotationSpeed = 200f;
-    private float shipRadius = 0.45f;
+    private float shipRadius = 0.5f;
     Vector3 startPosition = new Vector3(0f, 0f, 0f);
     public bool startGame;
-    public int score = 0;
     private float nextFire;
     float fireRate = 0.5f;
     public GameObject projectilePrefab;
-    public bool isDead;
-    public bool playEngine;
+    private bool isDead;
+    private bool playEngine;
     public GameObject explosionPrefab;
     private ParticleSystem engineFire;
 
@@ -129,7 +128,7 @@ public class SpaceShip : MonoBehaviour
         GetComponent<Image>().color = color;
         Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
         var explosion = Instantiate(explosionPrefab, pos, transform.rotation);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         Destroy(explosion);
         GetComponent<Image>().color = Color.white;
         yield return new WaitForSeconds(0.75f);

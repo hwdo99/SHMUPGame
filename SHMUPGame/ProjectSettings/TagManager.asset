@@ -12,6 +12,7 @@ TagManager:
   - Pkey
   - Enemy
   - Spaceship
+  - Asteroids
   layers:
   - Default
   - TransparentFX
