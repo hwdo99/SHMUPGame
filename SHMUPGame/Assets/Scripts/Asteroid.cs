@@ -5,16 +5,16 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     private Rigidbody2D asteroid;
-    public float speed;
+    private float speed;
     private float asteroidRadius = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        speed = Random.Range(100f, 200f);
+        speed = Random.Range(100f, 300f);
         asteroid = GetComponent<Rigidbody2D>();
         asteroid.velocity = transform.right * speed * Time.deltaTime;
-        asteroid.AddTorque(Random.Range(-20f, 20f));
+        asteroid.AddTorque(Random.Range(-30f, 30f));
     }
 
     // Update is called once per frame

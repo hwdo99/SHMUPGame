@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class SpaceShip : MonoBehaviour
 {
+    public GameObject explosionPrefab;
+    private ParticleSystem engineFire;
+    public GameObject projectilePrefab;
     private float Movespeed = 5f;
     private float rotationSpeed = 200f;
     private float shipRadius = 0.5f;
-    Vector3 startPosition = new Vector3(0f, 0f, 0f);
-    public bool startGame;
+    private bool startGame;
     private float nextFire;
-    float fireRate = 0.5f;
-    public GameObject projectilePrefab;
+    float fireRate = 0.3f;
     private bool isDead;
     private bool isInvincible;
     private bool playEngine;
-    public GameObject explosionPrefab;
-    private ParticleSystem engineFire;
+    
 
     // Start is called before the first frame update
     void Start()

@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpawnAsteroid : MonoBehaviour
 {
     private float speed;
-    public bool startGame;
+    private bool startGame;
     public GameObject asteroidPrefab;
-    float spawnDelay = 0.75f;
+    float spawnDelay = 0.60f;
     float horizontalOrVertical = 0.50f;
     float leftOrRight = 0.50f;
     float topOrBottom = 0.50f;
