@@ -609,6 +609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSFX: {fileID: 8300000, guid: 59a0be019a455e94bb1825cd93fdfa5c, type: 3}
   fireSFX: {fileID: 8300000, guid: ea921122f393e154db3ea2f7fd3580eb, type: 3}
+  explosionSFX: {fileID: 8300000, guid: 53d2119db592ec04ab330b7486c24992, type: 3}
+  destroyEnemySFX: {fileID: 8300000, guid: 929989d91e8b08442a2720f2b87cc983, type: 3}
 --- !u!1 &489586768
 GameObject:
   m_ObjectHideFlags: 0

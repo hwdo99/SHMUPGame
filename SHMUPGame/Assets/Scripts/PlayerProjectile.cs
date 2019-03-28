@@ -47,6 +47,7 @@ public class PlayerProjectile : MonoBehaviour
         GameObject collidedWith = collision.gameObject;
         if (collidedWith.tag == "Enemy" && collidedWith != null)
         {
+            SFXManage.instance.PlayDestroyEnemySFX();
             Destroy(collidedWith);
             Destroy(this.gameObject);
             TimerControl.currentTime += 1;

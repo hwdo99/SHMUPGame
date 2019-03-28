@@ -10,6 +10,8 @@ public class SFXManage : MonoBehaviour
     public static AudioSource SFXSource;
     public AudioClip buttonSFX;
     public AudioClip fireSFX;
+    public AudioClip explosionSFX;
+    public AudioClip destroyEnemySFX;
     public static float SFXvolume;
 
     private void Awake()
@@ -46,5 +48,15 @@ public class SFXManage : MonoBehaviour
     public void PlayFireSFX()
     {
         SFXSource.PlayOneShot(fireSFX);
+    }
+
+    public void PlayExplosionSFX()
+    {
+        SFXSource.PlayOneShot(explosionSFX);
+    }
+
+    public void PlayDestroyEnemySFX()
+    {
+        SFXSource.PlayOneShot(destroyEnemySFX);
     }
 }

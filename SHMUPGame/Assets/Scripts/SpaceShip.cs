@@ -9,15 +9,16 @@ public class SpaceShip : MonoBehaviour
     private float Movespeed = 5f;
     private float rotationSpeed = 200f;
     private float shipRadius = 0.45f;
-   // Vector3 startPosition = new Vector3(0f, 0f, 0f);
+    Vector3 startPosition = new Vector3(0f, 0f, 0f);
     public bool startGame;
-    public Text scoreText;
     public int score = 0;
     private float nextFire;
     float fireRate = 0.5f;
     public GameObject projectilePrefab;
     public bool isDead;
+    public bool playEngine;
     public GameObject explosionPrefab;
+    private ParticleSystem engineFire;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +26,12 @@ public class SpaceShip : MonoBehaviour
         startGame = false;
         Cursor.visible = true;
         isDead = false;
+        engineFire = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.P))
         {
             Destroy(GameObject.FindWithTag("Pkey"));
@@ -41,7 +42,12 @@ public class SpaceShip : MonoBehaviour
         {
             if (!isDead)
             {
-                var engineFire = GetComponent<ParticleSystem>();
+                if (!playEngine)
+                {
+                    engineFire.Play();
+                    playEngine = true;
+                }
+                 
                 if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
                     this.gameObject.transform.Translate(Vector3.up * Movespeed * Time.deltaTime);
 
@@ -56,9 +62,19 @@ public class SpaceShip : MonoBehaviour
                 {
                     SFXManage.instance.PlayFireSFX();
                     nextFire = Time.time + fireRate;
-                    Instantiate(projectilePrefab, transform.position, transform.rotation);
+                    Vector3 posOfShot = new Vector3(transform.position.x, transform.position.y, 0);
+                    Instantiate(projectilePrefab, posOfShot, transform.rotation);
                 }
             }
+            else
+            {
+                if (playEngine)
+                {
+                    engineFire.Stop();
+                    playEngine = false;
+                }  
+            }
+          
           
 
             Vector3 pos = transform.position;
@@ -95,6 +111,7 @@ public class SpaceShip : MonoBehaviour
         GameObject collidedWith = collision.gameObject;
         if (collidedWith.tag == "Enemy" && collidedWith != null)
         {
+            SFXManage.instance.PlayExplosionSFX();
             Destroy(collidedWith);
             LivesScript.lives -= 1;
             TimerControl.currentTime -= 10;
@@ -115,7 +132,7 @@ public class SpaceShip : MonoBehaviour
         yield return new WaitForSeconds(5);
         Destroy(explosion);
         GetComponent<Image>().color = Color.white;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         isDead = false;
     }
 }
