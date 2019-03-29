@@ -56,4 +56,16 @@ public class GameManage : MonoBehaviour
         SFXManage.instance.PlayButtonSFX();
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
+
+    public void ControlMenu()
+    {
+        SFXManage.instance.PlayButtonSFX();
+        SceneManager.LoadScene(6, LoadSceneMode.Additive);
+    }
+
+    public void BackToMainMenuFromControls()
+    {
+        SFXManage.instance.PlayButtonSFX();
+        SceneManager.UnloadSceneAsync(6);
+    }
 }
