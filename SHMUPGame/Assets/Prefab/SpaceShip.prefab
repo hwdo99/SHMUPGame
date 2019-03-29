@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2468380591672472809}
   - component: {fileID: 5231109529272347440}
   m_Layer: 5
-  m_Name: SpaceShip 1
+  m_Name: SpaceShip
   m_TagString: Spaceship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,10 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a38a5954aca44b9df67f2145ef9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGame: 0
-  projectilePrefab: {fileID: 6799280724899328172, guid: deb02e0929f46ec4e9e5837e958c9c71,
-    type: 3}
   explosionPrefab: {fileID: 4821664695835933116, guid: d07106a6a783d5b4e98f07fffd5960f9,
+    type: 3}
+  projectilePrefab: {fileID: 6799280724899328172, guid: deb02e0929f46ec4e9e5837e958c9c71,
     type: 3}
 --- !u!198 &2468380591672472809
 ParticleSystem:
@@ -233,7 +232,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.04
       minScalar: 5
       maxCurve:
         serializedVersion: 2
