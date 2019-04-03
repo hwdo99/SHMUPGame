@@ -21,9 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Pause Scene.unity
     guid: 20d8c2d9aa3ad8449b4be002bedd5757
   - enabled: 1
-    path: Assets/Scenes/Options Scene.unity
+    path: Assets/Scenes/Settings Scene.unity
     guid: 73a45140eda93ad468599b170c39aba7
   - enabled: 1
     path: Assets/Scenes/Controls Scene.unity
     guid: a51ac4858598f6c47911fd50aa986d63
+  - enabled: 1
+    path: Assets/Scenes/Audio Scene.unity
+    guid: 7ae242fa61d44104c9ec35968b8245bd
   m_configObjects: {}

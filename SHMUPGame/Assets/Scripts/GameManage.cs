@@ -51,7 +51,7 @@ public class GameManage : MonoBehaviour
         SceneManager.UnloadSceneAsync(5);
     }
 
-    public void ToOptionsMenu()
+    public void ToSettingsMenu()
     {
         SFXManage.instance.PlayButtonSFX();
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
@@ -67,5 +67,17 @@ public class GameManage : MonoBehaviour
     {
         SFXManage.instance.PlayButtonSFX();
         SceneManager.UnloadSceneAsync(6);
+    }
+
+    public void BackToMainFromAudio()
+    {
+        SFXManage.instance.PlayButtonSFX();
+        SceneManager.UnloadSceneAsync(7);
+    }
+
+    public void ToAudioSettings()
+    {
+        SFXManage.instance.PlayButtonSFX();
+        SceneManager.LoadScene(7, LoadSceneMode.Additive);  
     }
 }

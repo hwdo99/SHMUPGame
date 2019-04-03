@@ -15,6 +15,7 @@ TagManager:
   - Asteroids
   - PowerUp
   - Boss
+  - RegularShot
   layers:
   - Default
   - TransparentFX

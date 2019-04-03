@@ -53,7 +53,7 @@ public class PlayerProjectile : MonoBehaviour
             TimerControl.currentTime += 1;
             ScoreScript.currentScore += 5;
         }
-
+        
         if (collidedWith.tag == "Boss" && collidedWith != null)
         {   
             if (Boss.bossLives == 0)
@@ -68,17 +68,19 @@ public class PlayerProjectile : MonoBehaviour
             {
                 SFXManage.instance.PlayBossHitSFX();
                 Destroy(this.gameObject);
-                StartCoroutine(FlashOnHit(collidedWith));
+                StartCoroutine(FlashOnHit());
                 Boss.bossLives -= 1;
             }
         }
+        
     }
-
-    private IEnumerator FlashOnHit(GameObject collidedWith)
+    
+    private IEnumerator FlashOnHit()
     {
-        collidedWith.GetComponent<SpriteRenderer>().color = new Color(70, 70, 70, 255);
-        yield return new WaitForSeconds(0.25f);
-        collidedWith.GetComponent<SpriteRenderer>().color = Color.white;
+        GameObject.FindWithTag("Boss").GetComponent<SpriteRenderer>().color = Color.grey;
+        yield return new WaitForSeconds(0.05f);
+        GameObject.FindWithTag("Boss").GetComponent<SpriteRenderer>().color = Color.white;
     }
+    
 }
 
