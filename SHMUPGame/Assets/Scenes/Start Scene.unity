@@ -702,7 +702,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 59a0be019a455e94bb1825cd93fdfa5c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -900,6 +900,10 @@ MonoBehaviour:
   fireSFX: {fileID: 8300000, guid: ea921122f393e154db3ea2f7fd3580eb, type: 3}
   explosionSFX: {fileID: 8300000, guid: 53d2119db592ec04ab330b7486c24992, type: 3}
   destroyEnemySFX: {fileID: 8300000, guid: 929989d91e8b08442a2720f2b87cc983, type: 3}
+  getPowerUpSFX: {fileID: 8300000, guid: 13f7c4e6b9d301f47ad26c432f8d3fef, type: 3}
+  PowerUpShotSFX: {fileID: 8300000, guid: 3d035e12cf954b7489a312780a3bc7b4, type: 3}
+  BossHitSFX: {fileID: 8300000, guid: 5cde965d1f113f84e894ae3ecd24100c, type: 3}
+  BossDestroyedSFX: {fileID: 8300000, guid: f43a3fa73d340c4428c1c087d5ea4fb5, type: 3}
 --- !u!1 &489586768
 GameObject:
   m_ObjectHideFlags: 0

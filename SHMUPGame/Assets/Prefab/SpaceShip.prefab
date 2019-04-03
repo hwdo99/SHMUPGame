@@ -149,6 +149,8 @@ MonoBehaviour:
     type: 3}
   projectilePrefab: {fileID: 6799280724899328172, guid: deb02e0929f46ec4e9e5837e958c9c71,
     type: 3}
+  powerUpPrefab: {fileID: 0}
+  isPoweredUp: 0
 --- !u!198 &2468380591672472809
 ParticleSystem:
   m_ObjectHideFlags: 0

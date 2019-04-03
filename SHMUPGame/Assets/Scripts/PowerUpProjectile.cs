@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProjectile : MonoBehaviour
+public class PowerUpProjectile : MonoBehaviour
 {
-    private Rigidbody2D projectile;
-    float speed = 10f;
+    private Rigidbody2D powerUpProjectile;
+    private float speed = 15f;
 
     // Start is called before the first frame update
     void Start()
     {
-        projectile = GetComponent<Rigidbody2D>();
-        projectile.velocity = transform.up * speed;
+        powerUpProjectile = GetComponent<Rigidbody2D>();
+        powerUpProjectile.velocity = transform.up * speed;
     }
 
     // Update is called once per frame
@@ -55,30 +55,14 @@ public class PlayerProjectile : MonoBehaviour
         }
 
         if (collidedWith.tag == "Boss" && collidedWith != null)
-        {   
-            if (Boss.bossLives == 0)
-            {
-                SFXManage.instance.PlayBossDestroyedSFX();
+        {
+                Boss.bossLives = 0;
+                SFXManage.instance.PlayDestroyEnemySFX();
                 Destroy(collidedWith);
                 Destroy(this.gameObject);
-                TimerControl.currentTime += 3;
+                TimerControl.currentTime += 5;
                 ScoreScript.currentScore += 15;
-            }
-            else
-            {
-                SFXManage.instance.PlayBossHitSFX();
-                Destroy(this.gameObject);
-                StartCoroutine(FlashOnHit(collidedWith));
-                Boss.bossLives -= 1;
-            }
         }
-    }
-
-    private IEnumerator FlashOnHit(GameObject collidedWith)
-    {
-        collidedWith.GetComponent<SpriteRenderer>().color = new Color(70, 70, 70, 255);
-        yield return new WaitForSeconds(0.25f);
-        collidedWith.GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
 

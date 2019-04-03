@@ -13,6 +13,8 @@ TagManager:
   - Enemy
   - Spaceship
   - Asteroids
+  - PowerUp
+  - Boss
   layers:
   - Default
   - TransparentFX
