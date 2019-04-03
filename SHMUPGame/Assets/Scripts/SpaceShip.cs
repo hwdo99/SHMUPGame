@@ -178,7 +178,7 @@ public class SpaceShip : MonoBehaviour
     {
         isPoweredUp = true;
         GetComponent<Image>().color = new Color(255, 0, 235, 255); // make color different when powered up
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(7f);
         isPoweredUp = false;
         GetComponent<Image>().color = Color.white;
     }
